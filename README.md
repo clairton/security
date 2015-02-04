@@ -1,2 +1,63 @@
 # security
 Segurança baseado em token com uso de CDI interceptors
+
+Adicionar no beans.xml:
+```xml
+<interceptors>
+	<class>br.eti.clairton.security.LockInterceptor</class>
+	<class>br.eti.clairton.security.GateInterceptor</class>
+</interceptors>
+```
+Cria produces com qualifiers @App, @User e @Token:
+```java
+@Produces
+@User
+public String getUser() {
+	return "admin";
+}
+
+@Produces
+@App
+public String getApp() {
+	return "Pass";
+}
+
+@Produces
+@Token
+public String getToken() {
+	return "123";
+}
+```
+O metodos que só podem ser acessados com identificação de usuário devem ser anotados com @Protected:
+```java
+@Protected
+public void test() {
+
+}
+```
+O metodos que só podem ser acessados mediante autorização devem ser anotados com @Authorized:
+```java
+@Authorized
+public void test() {
+
+}
+```
+Para especificar o nome do recurso pode anotadar a classe:
+```java
+@Resource("aplicacao")
+class AplicacaoController {
+...
+...
+}
+```
+Ou um metodo retornando String:
+```java
+class AplicacaoController {
+	...
+	...
+	@Resource
+	public String getResource() {
+		return "aplicacao";
+	}
+}
+```
