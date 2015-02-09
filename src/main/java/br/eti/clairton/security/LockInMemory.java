@@ -2,8 +2,7 @@ package br.eti.clairton.security;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Vetoed;
 
 /**
  * In memory sample of implementation {@link Lock}.
@@ -11,13 +10,14 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
  *
  */
-@ApplicationScoped
+@Vetoed
 public class LockInMemory implements Lock {
 
 	private static final Map<String, String> REPOSITORY = new HashMap<String, String>() {
 		private static final long serialVersionUID = 1L;
 		{
 			put("admin", "123456");
+			put("maria", "123456");
 		}
 	};
 
@@ -25,7 +25,7 @@ public class LockInMemory implements Lock {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Boolean isValid(String user, String password) {
+	public Boolean isValid(final String user, final String password) {
 		return REPOSITORY.containsKey(user)
 				&& REPOSITORY.get(user).equals(password);
 	}

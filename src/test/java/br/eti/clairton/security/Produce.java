@@ -1,6 +1,7 @@
 package br.eti.clairton.security;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
@@ -33,5 +34,15 @@ public class Produce {
 	@Token
 	public String getToken() {
 		return "123";
+	}
+
+	@Produces
+	public Lock getLock() {
+		return new LockInMemory();
+	}
+
+	@Produces
+	public Locksmith getLocksmith(@Default Lock lock) {
+		return new LocksmithInMemory(lock);
 	}
 }

@@ -83,4 +83,27 @@
 			<url>git:snapshots://git@github.com:clairton/mvn-repo.git</url>
 		</snapshotRepository>
 	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>mvn-repo-releases</id>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<url>https://raw.github.com/clairton/mvn-repo/releases</url>
+		</repository>
+		<repository>
+			<id>mvn-repo-snapshots</id>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<url>https://raw.github.com/clairton/mvn-repo/snapshots</url>
+		</repository>
+
+	</repositories>
 </project>

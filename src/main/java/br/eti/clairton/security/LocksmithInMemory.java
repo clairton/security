@@ -4,8 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import javax.enterprise.inject.Vetoed;
 import javax.security.auth.login.CredentialNotFoundException;
 
 /**
@@ -13,7 +12,7 @@ import javax.security.auth.login.CredentialNotFoundException;
  * 
  * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
  */
-@ApplicationScoped
+@Vetoed
 public class LocksmithInMemory implements Locksmith {
 	private final Lock lock;
 
@@ -30,7 +29,6 @@ public class LocksmithInMemory implements Locksmith {
 	 * @param lock
 	 *            implementation
 	 */
-	@Inject
 	public LocksmithInMemory(final Lock lock) {
 		super();
 		this.lock = lock;
