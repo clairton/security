@@ -1,5 +1,5 @@
 # security
-Segurança baseado em token com uso de CDI interceptors
+Segurança baseado em token com uso de CDI interceptors.
 
 Adicionar no beans.xml:
 ```xml
@@ -28,6 +28,9 @@ public String getToken() {
 	return "123";
 }
 ```
+
+É necessário fornecer uma implementação de Lock e outro de Locksmith, o Lock é responsavel por identificar o usuário, enquanto o Locksmith controla os tokens de acesso.
+
 O metodos que só podem ser acessados com identificação de usuário devem ser anotados com @Protected:
 ```java
 @Protected
