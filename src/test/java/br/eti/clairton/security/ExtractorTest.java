@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import br.eti.clairton.security.another.pack.SaleController;
+
 public class ExtractorTest {
 	private final Extractor extractor = new Extractor();
 
@@ -17,6 +19,7 @@ public class ExtractorTest {
 		assertEquals("aplicacao",
 				extractor.getResource(new AplicacaoController()));
 	}
+
 	@Test
 	public void testByType() {
 		assertEquals("sale", extractor.getResource(SaleController.class));
@@ -24,7 +27,7 @@ public class ExtractorTest {
 
 	@Test
 	public void testTypeAnotated() {
-		assertEquals("sale", extractor.getResource(new SaleController()));
+		assertEquals("sale", extractor.getResource(new SaleController("asdf")));
 	}
 
 	@Test(expected = IllegalStateException.class)
@@ -39,11 +42,6 @@ public class ExtractorTest {
 
 }
 
-@Resource("sale")
-class SaleController {
-
-}
-
 @Resource()
 class IncorrectTypeAnnotatedController {
 
@@ -53,6 +51,6 @@ class IncorrectMethodAnnotatedController {
 
 	@Resource
 	public SaleController test() {
-		return new SaleController();
+		return new SaleController("");
 	}
 }

@@ -1,5 +1,6 @@
 package br.eti.clairton.security;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -60,9 +61,16 @@ public class Extractor {
 				+ Protected.class);
 	}
 
-	public String getResource(Class<?> type) {
+	public String getResource(final Class<?> type) {
+		Constructor<?> constructor;
 		try {
-			final Object target = type.newInstance();
+			constructor = type.getDeclaredConstructor();
+		} catch (final NoSuchMethodException e) {
+			throw new RuntimeException("Deve haver um construtor padrão", e);
+		}
+		constructor.setAccessible(true);
+		try {
+			final Object target = constructor.newInstance();
 			return getResource(target);
 		} catch (final Exception e) {
 			throw new RuntimeException(
