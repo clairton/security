@@ -38,7 +38,7 @@ public void test() {
 
 }
 ```
-O metodos que só podem ser acessados mediante autorização devem ser anotados com @Authorized:
+O métodos que só podem ser acessados mediante autorização devem ser anotados com @Authorized:
 ```java
 @Authorized
 public void test() {
