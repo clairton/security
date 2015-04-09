@@ -1,7 +1,6 @@
 package br.eti.clairton.security;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
@@ -27,7 +26,7 @@ public class GateInterceptor {
 
 	@Inject
 	public GateInterceptor(@App final String app, @User final String user,
-			final Gate gate, Extractor extractor, final Logger logger) {
+			final Gate gate, final Extractor extractor, final Logger logger) {
 		super();
 		this.app = app;
 		this.user = user;
@@ -50,14 +49,7 @@ public class GateInterceptor {
 	public Object invoke(final InvocationContext context) throws Throwable {
 		final Object target = context.getTarget();
 		final String resource = extractor.getResource(target);
-		final String operation;
-		final Method method = context.getMethod();
-		if (method.isAnnotationPresent(Operation.class)) {
-			final Operation annotation = method.getAnnotation(Operation.class);
-			operation = annotation.value();
-		} else {
-			operation = method.getName();
-		}
+		final String operation = extractor.getOperation(context.getMethod());
 		logger.debug("Interceptando {}#{}", new Object[] {
 				target.getClass().getSimpleName(), operation });
 		if (gate.isOpen(user, app, resource, operation)) {

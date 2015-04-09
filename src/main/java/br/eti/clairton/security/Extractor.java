@@ -59,4 +59,15 @@ public class Extractor {
 				+ " must be annoted with " + Resource.class + " to user "
 				+ Protected.class);
 	}
+
+	public String getResource(Class<?> type) {
+		try {
+			final Object target = type.newInstance();
+			return getResource(target);
+		} catch (final Exception e) {
+			throw new RuntimeException(
+					"Erro ao recuperar o nome do recurso pelo tipo do controller",
+					e);
+		}
+	}
 }

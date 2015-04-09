@@ -17,6 +17,10 @@ public class ExtractorTest {
 		assertEquals("aplicacao",
 				extractor.getResource(new AplicacaoController()));
 	}
+	@Test
+	public void testByType() {
+		assertEquals("sale", extractor.getResource(SaleController.class));
+	}
 
 	@Test
 	public void testTypeAnotated() {
