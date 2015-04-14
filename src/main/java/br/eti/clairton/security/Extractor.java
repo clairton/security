@@ -58,8 +58,9 @@ public class Extractor {
 			}
 			return annotation.value();
 		} else {
-			final List<Method> methods = mirror.on(target.getClass())
-					.reflectAll().methods().matching(matcher);
+			final String typeName = withoutProxy(type.getName()); 
+			final List<Method> methods = mirror.on(typeName).reflectAll().methods()
+					.matching(matcher);
 			if (methods.size() > 1) {
 				throw new IllegalArgumentException("The type " + type
 						+ " must be annoted twice with " + Resource.class);
@@ -71,7 +72,7 @@ public class Extractor {
 					throw new IllegalStateException(e);
 				}
 			} else {
-				final String controller = target.getClass().getSimpleName();
+				final String controller = withoutProxy(target.getClass().getSimpleName());
 				final String model = controller.split("Controller*.")[0];
 				return model.substring(0, 1).toLowerCase() + model.substring(1);
 			}
@@ -94,5 +95,9 @@ public class Extractor {
 					"Erro ao recuperar o nome do recurso pelo tipo do controller",
 					e);
 		}
+	}
+	
+	private String withoutProxy(String className){
+		return className.split("\\$Proxy\\$")[0];
 	}
 }

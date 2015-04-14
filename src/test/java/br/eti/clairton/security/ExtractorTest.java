@@ -44,6 +44,11 @@ public class ExtractorTest {
 	public void testTypeWihoutAnotated() {
 		assertEquals("wihoutAnotated", extractor.getResource(new WihoutAnotatedController4_464Hsdf()));
 	}
+
+	@Test
+	public void testTypeProxy() {
+		assertEquals("proxyAble", extractor.getResource(new ProxyAble$Proxy$kasdbshj()));
+	}
 }
 
 @Resource()
@@ -60,4 +65,7 @@ class IncorrectMethodAnnotatedController {
 }
 
 class WihoutAnotatedController4_464Hsdf{}
+
+class ProxyAble$Proxy$kasdbshj{}
+class ProxyAble{}
 
