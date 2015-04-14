@@ -40,6 +40,10 @@ public class ExtractorTest {
 		extractor.getResource(new IncorrectMethodAnnotatedController());
 	}
 
+	@Test
+	public void testTypeWihoutAnotated() {
+		assertEquals("wihoutAnotated", extractor.getResource(new WihoutAnotatedController4_464Hsdf()));
+	}
 }
 
 @Resource()
@@ -54,3 +58,6 @@ class IncorrectMethodAnnotatedController {
 		return new SaleController("");
 	}
 }
+
+class WihoutAnotatedController4_464Hsdf{}
+

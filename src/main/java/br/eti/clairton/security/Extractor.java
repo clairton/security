@@ -21,7 +21,7 @@ public class Extractor {
 	private final Matcher<Method> matcher = new Matcher<Method>() {
 
 		@Override
-		public boolean accepts(Method method) {
+		public boolean accepts(final Method method) {
 			return method.isAnnotationPresent(Resource.class);
 		}
 	};
@@ -71,9 +71,9 @@ public class Extractor {
 					throw new IllegalStateException(e);
 				}
 			} else {
-				throw new IllegalArgumentException("The type " + type
-						+ " must be annoted with " + Resource.class
-						+ " to user " + Protected.class);
+				final String controller = target.getClass().getSimpleName();
+				final String model = controller.split("Controller*.")[0];
+				return model.substring(0, 1).toLowerCase() + model.substring(1);
 			}
 		}
 	}
