@@ -2,8 +2,12 @@ package br.eti.clairton.security;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
+
+import net.vidageek.mirror.dsl.Mirror;
+import net.vidageek.mirror.list.dsl.Matcher;
 
 /**
  * Extrai os metadados da classe para validar a permissão.
@@ -13,6 +17,14 @@ import javax.enterprise.context.ApplicationScoped;
  */
 @ApplicationScoped
 public class Extractor {
+	private final Mirror mirror = new Mirror();
+	private final Matcher<Method> matcher = new Matcher<Method>() {
+
+		@Override
+		public boolean accepts(Method method) {
+			return method.isAnnotationPresent(Resource.class);
+		}
+	};
 
 	/**
 	 * Retorna o nome da operação para o metodo.
@@ -46,19 +58,24 @@ public class Extractor {
 			}
 			return annotation.value();
 		} else {
-			for (final Method method : type.getDeclaredMethods()) {
-				if (method.isAnnotationPresent(Resource.class)) {
-					try {
-						return (String) method.invoke(target);
-					} catch (final Exception e) {
-						throw new IllegalStateException(e);
-					}
+			final List<Method> methods = mirror.on(target.getClass())
+					.reflectAll().methods().matching(matcher);
+			if (methods.size() > 1) {
+				throw new IllegalArgumentException("The type " + type
+						+ " must be annoted twice with " + Resource.class);
+			} else if (methods.size() == 1) {
+				try {
+					Method method = methods.get(0);
+					return (String) method.invoke(target);
+				} catch (final Exception e) {
+					throw new IllegalStateException(e);
 				}
+			} else {
+				throw new IllegalArgumentException("The type " + type
+						+ " must be annoted with " + Resource.class
+						+ " to user " + Protected.class);
 			}
 		}
-		throw new IllegalArgumentException("The type " + type
-				+ " must be annoted with " + Resource.class + " to user "
-				+ Protected.class);
 	}
 
 	public String getResource(final Class<?> type) {
