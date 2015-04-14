@@ -1,4 +1,4 @@
-# security
+# security[![Build Status](https://travis-ci.org/clairton/security.svg?branch=master)](https://travis-ci.org/clairton/security)
 Segurança baseado em token com uso de CDI interceptors.
 
 Adicionar no beans.xml:
