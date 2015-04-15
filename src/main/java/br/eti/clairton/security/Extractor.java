@@ -48,7 +48,7 @@ public class Extractor {
 	 *            instancia da classe
 	 * @return nome do recurso
 	 */
-	public String getResource(Object target) {
+	public String getResource(final Object target) {
 		final Class<?> type = target.getClass();
 		if (type.isAnnotationPresent(Resource.class)) {
 			final Resource annotation = type.getAnnotation(Resource.class);
@@ -66,8 +66,13 @@ public class Extractor {
 						+ " must be annoted twice with " + Resource.class);
 			} else if (methods.size() == 1) {
 				try {
-					Method method = methods.get(0);
-					return (String) method.invoke(target);
+					final Method method = methods.get(0);
+					String resource = (String) method.invoke(target);
+					if(resource == null || resource.isEmpty()){
+						final Object instance = mirror.on(typeName).invoke().constructor().withoutArgs();
+						resource = (String) method.invoke(instance);
+					}
+					return resource;
 				} catch (final Exception e) {
 					throw new IllegalStateException(e);
 				}
@@ -98,6 +103,6 @@ public class Extractor {
 	}
 	
 	private String withoutProxy(String className){
-		return className.split("\\$Proxy\\$")[0];
+		return className.split("\\$Proxy\\$")[0].split("_\\$")[0];
 	}
 }
