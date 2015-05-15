@@ -24,7 +24,7 @@ public interface Locksmith {
 	 * @throws CredentialNotFoundException
 	 *             caso usuario/senha não existam ou sejam incompativeis
 	 */
-	String create(@NotNull final String user, @NotNull final String password)
+	<T>T create(@NotNull final String user, @NotNull final String password)
 			throws CredentialNotFoundException;
 
 	/**

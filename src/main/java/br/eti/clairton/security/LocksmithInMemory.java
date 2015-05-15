@@ -16,7 +16,7 @@ import javax.security.auth.login.CredentialNotFoundException;
 public class LocksmithInMemory implements Locksmith {
 	private final Lock lock;
 
-	private static final Map<String, String> REPOSITORY = new HashMap<String, String>() {
+	private static final Map<Object, String> REPOSITORY = new HashMap<Object, String>() {
 		private static final long serialVersionUID = 1L;
 		{
 			put("admin", "123");
@@ -38,10 +38,11 @@ public class LocksmithInMemory implements Locksmith {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String create(final String user, final String password)
+	public <T> T create(final String user, final String password)
 			throws CredentialNotFoundException {
 		if (lock.isValid(user, password)) {
-			final String hash = new Date().getTime() + "abc";
+			@SuppressWarnings("unchecked")
+			final T hash = (T) (new Date().getTime() + "abc");
 			REPOSITORY.put(hash, user);
 			return hash;
 		} else {
