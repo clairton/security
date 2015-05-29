@@ -12,6 +12,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.inject.Qualifier;
+
 /**
  * Especifica o nome do recurso a ser acessado.
  * 
@@ -22,6 +24,7 @@ import java.lang.annotation.Target;
 @Target({ FIELD, PARAMETER, METHOD, CONSTRUCTOR, TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Qualifier
 public @interface Resource {
 	String value() default "";
 }

@@ -12,16 +12,18 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.inject.Qualifier;
+
 /**
  * Especifica o nome da operação a ser acessada.
  * 
  * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
- *
  */
 @Inherited
 @Target({ FIELD, PARAMETER, METHOD, CONSTRUCTOR, TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Qualifier
 public @interface Operation {
 	String value();
 }
