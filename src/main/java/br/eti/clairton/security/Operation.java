@@ -25,5 +25,5 @@ import javax.inject.Qualifier;
 @Documented
 @Qualifier
 public @interface Operation {
-	String value();
+	String value() default "";
 }
