@@ -38,8 +38,7 @@ public class LocksmithInMemory implements Locksmith {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public <T> T create(final String user, final String password)
-			throws CredentialNotFoundException {
+	public <T> T create(final String user, final String password) throws CredentialNotFoundException {
 		if (lock.isValid(user, password)) {
 			@SuppressWarnings("unchecked")
 			final T hash = (T) (new Date().getTime() + "abc");
@@ -54,7 +53,7 @@ public class LocksmithInMemory implements Locksmith {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void invalidate(String key) {
+	public void invalidate(final String key) {
 		REPOSITORY.remove(key);
 	}
 
@@ -62,7 +61,7 @@ public class LocksmithInMemory implements Locksmith {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Boolean isValid(String token) {
+	public Boolean isValid(final String token) {
 		return REPOSITORY.containsKey(token);
 	}
 
@@ -70,8 +69,7 @@ public class LocksmithInMemory implements Locksmith {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getUserByToken(String token) {
+	public String getUserByToken(final String token) {
 		return REPOSITORY.get(token);
 	}
-
 }

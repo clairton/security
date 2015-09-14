@@ -10,7 +10,6 @@ import java.lang.reflect.Method;
 
 import javax.interceptor.InvocationContext;
 
-import org.apache.logging.log4j.LogManager;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,8 +23,7 @@ public class LockInterceptorTest {
 	@Before
 	public void setUp() throws Exception {
 		authorizator = mock(Gate.class);
-		interceptor = new GateInterceptor(app, usuario, authorizator,
-				new Extractor(), LogManager.getLogger());
+		interceptor = new GateInterceptor(app, usuario, authorizator, new Extractor());
 		final Object[] parameters = {};
 		final AplicacaoController target = new AplicacaoController();
 		final Method method = target.getClass().getMethod("test");

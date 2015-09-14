@@ -7,6 +7,7 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
@@ -22,16 +23,14 @@ public class GateInterceptor {
 	private final String app;
 	private final Gate gate;
 	private final Extractor extractor;
-	private final Logger logger;
+	private final Logger logger = LogManager.getLogger(GateInterceptor.class);
 
 	@Inject
-	public GateInterceptor(@App final String app, @User final String user,
-			final Gate gate, final Extractor extractor, final Logger logger) {
+	public GateInterceptor(@App final String app, @User final String user, final Gate gate, final Extractor extractor) {
 		super();
 		this.app = app;
 		this.user = user;
 		this.gate = gate;
-		this.logger = logger;
 		this.extractor = extractor;
 	}
 

@@ -21,8 +21,7 @@ public class LockInterceptor {
 	private final String token;
 
 	@Inject
-	public LockInterceptor(@NotNull final Locksmith locksmith,
-			@Token final String token) {
+	public LockInterceptor(@NotNull final Locksmith locksmith, @Token final String token) {
 		this.locksmith = locksmith;
 		this.token = token;
 	}

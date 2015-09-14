@@ -24,8 +24,7 @@ public interface Locksmith {
 	 * @throws CredentialNotFoundException
 	 *             caso usuario/senha não existam ou sejam incompativeis
 	 */
-	<T>T create(@NotNull final String user, @NotNull final String password)
-			throws CredentialNotFoundException;
+	<T>T create(@NotNull final String user, @NotNull final String password) throws CredentialNotFoundException;
 
 	/**
 	 * Destroy a chave com o token/usuario recebido como parametro.
@@ -51,5 +50,5 @@ public interface Locksmith {
 	 *            chave do usuario
 	 * @return usuario dono da chave
 	 */
-	String getUserByToken(@NotNull final String token);
+	String getUserByToken(@NotNull final String token);	
 }

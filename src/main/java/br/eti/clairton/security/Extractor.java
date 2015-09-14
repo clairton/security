@@ -85,7 +85,7 @@ public class Extractor {
 	}
 
 	public String getResource(final Class<?> type) {
-		Constructor<?> constructor;
+		final Constructor<?> constructor;
 		try {
 			constructor = type.getDeclaredConstructor();
 		} catch (final NoSuchMethodException e) {
