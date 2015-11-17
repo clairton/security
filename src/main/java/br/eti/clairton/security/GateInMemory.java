@@ -15,16 +15,13 @@ public class GateInMemory implements Gate {
 		this(new HashMap<String, Map<String, Map<String, List<String>>>>());
 	}
 
-	public GateInMemory(
-			Map<String, Map<String, Map<String, List<String>>>> authorizations) {
+	public GateInMemory(final Map<String, Map<String, Map<String, List<String>>>> authorizations) {
 		super();
 		this.authorizations = authorizations;
 	}
 
 	@Override
-	public Boolean isOpen(@NotNull final String user,
-			@NotNull final String app, @NotNull final String resource,
-			@NotNull final String operation) {
+	public Boolean isOpen(@NotNull final String user, @NotNull final String app, @NotNull final String resource, @NotNull final String operation) {
 		if (user != null) {
 			return authorizations.get(user).get(app).get(resource)
 					.contains(operation);

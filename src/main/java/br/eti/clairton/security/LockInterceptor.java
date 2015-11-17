@@ -9,7 +9,7 @@ import javax.interceptor.InvocationContext;
 import javax.validation.constraints.NotNull;
 
 /**
- * INterceptor para metodos anotados com {@link Protected}.
+ * Interceptor para metodos anotados com {@link Protected}.
  * 
  * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
  *
@@ -42,10 +42,9 @@ public class LockInterceptor {
 			if (locksmith.isValid(token)) {
 				return context.proceed();
 			} else {
-				throw new UnauthenticatedException("Token " + token
-						+ " is invalid");
+				throw new UnauthenticatedException("Token " + token + " is invalid");
 			}
-		} catch (InvocationTargetException e) {
+		} catch (final InvocationTargetException e) {
 			throw e.getTargetException();
 		}
 	}

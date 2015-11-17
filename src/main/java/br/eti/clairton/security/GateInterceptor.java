@@ -14,16 +14,15 @@ import org.apache.logging.log4j.Logger;
  * Interceptor para metodos anotados com {@link Protected}.
  * 
  * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
- *
  */
 @Interceptor
 @Protected
 public class GateInterceptor {
+	private final Logger logger = LogManager.getLogger(GateInterceptor.class);
 	private final String user;
 	private final String app;
 	private final Gate gate;
 	private final Extractor extractor;
-	private final Logger logger = LogManager.getLogger(GateInterceptor.class);
 
 	@Inject
 	public GateInterceptor(@App final String app, @User final String user, final Gate gate, final Extractor extractor) {
@@ -49,12 +48,11 @@ public class GateInterceptor {
 		final Object target = context.getTarget();
 		final String resource = extractor.getResource(target);
 		final String operation = extractor.getOperation(context.getMethod());
-		logger.debug("Interceptando {}#{}", new Object[] {
-				target.getClass().getSimpleName(), operation });
+		logger.debug("Interceptando {}#{}", target.getClass().getSimpleName(), operation);
 		if (gate.isOpen(user, app, resource, operation)) {
 			try {
 				return context.proceed();
-			} catch (InvocationTargetException e) {
+			} catch (final InvocationTargetException e) {
 				throw e.getTargetException();
 			}
 		} else {

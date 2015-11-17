@@ -12,9 +12,9 @@ public interface Gate {
 	/**
 	 * Verifica se o usuario esta habilitado a acessar o recurso especificao.
 	 * 
-	 * @param app
-	 *            aplicacão
 	 * @param user
+	 *            aplicacão
+	 * @param app
 	 *            usuario
 	 * @param resource
 	 *            recurso
@@ -22,7 +22,5 @@ public interface Gate {
 	 *            operation
 	 * @return true/false
 	 */
-	public Boolean isOpen(@NotNull final String user,
-			@NotNull final String app, @NotNull final String resource,
-			@NotNull final String operation);
+	public Boolean isOpen(@NotNull final String user, @NotNull final String app, @NotNull final String resource, @NotNull final String operation);
 }
