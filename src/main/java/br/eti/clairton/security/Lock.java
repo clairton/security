@@ -3,10 +3,9 @@ package br.eti.clairton.security;
 import javax.validation.constraints.NotNull;
 
 /**
- * Lock for unknow users.
+ * Lock for users.
  * 
  * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
- *
  */
 public interface Lock {
 	/**
