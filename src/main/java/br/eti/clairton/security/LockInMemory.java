@@ -46,4 +46,12 @@ public class LockInMemory implements Lock {
 		}
 		return Boolean.FALSE;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Boolean reset(final String user, final String password) {
+		return update(user, null, password);
+	}
 }
