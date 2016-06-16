@@ -59,11 +59,9 @@ public class Extractor {
 			return annotation.value();
 		} else {
 			final String typeName = withoutProxy(type.getName()); 
-			final List<Method> methods = mirror.on(typeName).reflectAll().methods()
-					.matching(matcher);
+			final List<Method> methods = mirror.on(typeName).reflectAll().methods().matching(matcher);
 			if (methods.size() > 1) {
-				throw new IllegalArgumentException("The type " + type
-						+ " must be annoted twice with " + Resource.class);
+				throw new IllegalArgumentException("The type " + type + " must be annoted twice with " + Resource.class);
 			} else if (methods.size() == 1) {
 				try {
 					final Method method = methods.get(0);
@@ -96,9 +94,7 @@ public class Extractor {
 			final Object target = constructor.newInstance();
 			return getResource(target);
 		} catch (final Exception e) {
-			throw new RuntimeException(
-					"Erro ao recuperar o nome do recurso pelo tipo do controller",
-					e);
+			throw new RuntimeException("Erro ao recuperar o nome do recurso pelo tipo do controller", e);
 		}
 	}
 	
