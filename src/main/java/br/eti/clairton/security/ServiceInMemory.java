@@ -17,6 +17,14 @@ public class ServiceInMemory implements Service {
 		super();
 		this.lock = lock;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Boolean found(String user) {
+		return getRepository().containsKey(user);
+	}
 
 	/**
 	 * {@inheritDoc}

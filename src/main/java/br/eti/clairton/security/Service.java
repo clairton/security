@@ -40,4 +40,14 @@ public interface Service {
 	 */
 	Boolean create(@NotNull final String user, final @NotNull String password);
 
+
+
+	/**
+	 * Test user exist.
+	 * 
+	 * 
+	 * @param user
+	 *            login to test
+	 */
+	Boolean found(@NotNull final String user);
 }
