@@ -40,6 +40,23 @@ public interface Service {
 	 */
 	Boolean create(@NotNull final String user, final @NotNull String password);
 
+	/**
+	 * Disable user.
+	 * 
+	 * 
+	 * @param user
+	 *            login to disable
+	 */
+	void disable(@NotNull final String user);
+
+	/**
+	 * Enable user.
+	 * 
+	 * 
+	 * @param user
+	 *            login to enable
+	 */
+	void enable(@NotNull final String user);
 
 
 	/**

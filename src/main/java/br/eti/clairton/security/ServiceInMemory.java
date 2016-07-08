@@ -57,4 +57,22 @@ public class ServiceInMemory implements Service {
 		getRepository().put(user, password);
 		return lock.isValid(user, password);
 	}
+	
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void disable(final String user) {
+		getRepository().remove(user);
+	}
+	
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void enable(final String user) {
+		getRepository().put(user, null);
+	}
 }
