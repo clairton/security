@@ -38,7 +38,7 @@ public interface Service {
 	 * @param password
 	 *            string desired to password
 	 */
-	Boolean create(@NotNull final String user, final @NotNull String password);
+	Boolean create(@NotNull final String user, final @NotNull String password) throws InvalidUserException;
 
 	/**
 	 * Disable user.
