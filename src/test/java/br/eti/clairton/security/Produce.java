@@ -8,20 +8,9 @@ import java.util.Map;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @ApplicationScoped
 public class Produce {
-
-	@Produces
-	public Logger produceLogger(final InjectionPoint injectionPoint) {
-		final Class<?> type = injectionPoint.getMember().getDeclaringClass();
-		final String klass = type.getName();
-		return LogManager.getLogger(klass);
-	}
 
 	@Produces
 	@User

@@ -15,7 +15,7 @@ import javax.inject.Qualifier;
 /**
  * Qualifier para devolver a string que representa a aplicacão.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  *
  */
 @Qualifier

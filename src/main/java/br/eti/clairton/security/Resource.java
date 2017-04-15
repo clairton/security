@@ -17,7 +17,7 @@ import javax.inject.Qualifier;
 /**
  * Especifica o nome do recurso a ser acessado.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  */
 @Inherited
 @Target({ FIELD, PARAMETER, METHOD, CONSTRUCTOR, TYPE })

@@ -26,6 +26,8 @@ public interface Service {
 	 *            login to reset password
 	 * @param password
 	 *            string desired to password
+	 *            
+	 * @return true/false
 	 */
 	Boolean reset(@NotNull final String user, final @NotNull String password);
 
@@ -37,6 +39,8 @@ public interface Service {
 	 *            login to create
 	 * @param password
 	 *            string desired to password
+	 *            
+	 * @return true/false
 	 */
 	Boolean create(@NotNull final String user, final @NotNull String password) throws InvalidUserException;
 
@@ -65,6 +69,8 @@ public interface Service {
 	 * 
 	 * @param user
 	 *            login to test
+	 *            
+	 * @return true/false
 	 */
 	Boolean found(@NotNull final String user);
 }

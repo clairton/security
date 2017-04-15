@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Interceptor para metodos anotados com {@link Protected}.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  *
  */
 @Interceptor

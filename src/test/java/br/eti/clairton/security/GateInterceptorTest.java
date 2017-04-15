@@ -5,12 +5,12 @@ import static org.mockito.Mockito.mock;
 import javax.inject.Inject;
 import javax.interceptor.InvocationContext;
 
+import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.eti.clairton.cdi.test.CdiJUnit4Runner;
 
-@RunWith(CdiJUnit4Runner.class)
+@RunWith(CdiTestRunner.class)
 public class GateInterceptorTest {
 	private LockInterceptor interceptor;
 	private InvocationContext context = mock(InvocationContext.class);

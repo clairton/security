@@ -12,7 +12,7 @@ import javax.interceptor.InterceptorBinding;
 /**
  * Annotation para interceptar metodo verificar autenticacão.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  */
 @Inherited
 @Documented

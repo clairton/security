@@ -7,13 +7,12 @@ import static org.junit.Assert.assertTrue;
 import javax.inject.Inject;
 import javax.security.auth.login.CredentialNotFoundException;
 
+import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.eti.clairton.cdi.test.CdiJUnit4Runner;
-
-@RunWith(CdiJUnit4Runner.class)
+@RunWith(CdiTestRunner.class)
 public class LocksmithInMemoryTest {
 
 	private @Inject Locksmith lockSmith;

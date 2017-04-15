@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Controla a chaves de acesso dos usuários.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  *
  */
 public interface Locksmith {
@@ -18,6 +18,8 @@ public interface Locksmith {
 	 *            usuário
 	 * @param password
 	 *            senha
+	 * 
+	 * @param <T> type of return
 	 * 
 	 * @return token para identificação do usuário
 	 * 

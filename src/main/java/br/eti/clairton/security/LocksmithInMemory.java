@@ -10,7 +10,7 @@ import javax.security.auth.login.CredentialNotFoundException;
 /**
  * In memory implementation of {@link Locksmith}.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  */
 @Vetoed
 public class LocksmithInMemory implements Locksmith {

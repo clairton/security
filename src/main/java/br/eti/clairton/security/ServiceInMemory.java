@@ -2,15 +2,16 @@ package br.eti.clairton.security;
 
 import static br.eti.clairton.security.Repository.getRepository;
 import static java.lang.Boolean.FALSE;
-import static org.apache.logging.log4j.LogManager.getLogger;
+import static java.util.logging.Level.FINE;
+import static java.util.logging.Logger.getLogger;
+
+import java.util.logging.Logger;
 
 import javax.enterprise.inject.Vetoed;
 
-import org.apache.logging.log4j.Logger;
-
 @Vetoed
 public class ServiceInMemory implements Service {
-	private static final Logger logger = getLogger(ServiceInMemory.class);
+	private static final Logger logger = getLogger(ServiceInMemory.class.getSimpleName());
 	private final Lock lock;
 
 	public ServiceInMemory(final Lock lock) {
@@ -32,7 +33,7 @@ public class ServiceInMemory implements Service {
 	@Override
 	public Boolean update(final String user, final String currentPassword, final String newPassword) {
 		if (lock.isValid(user, currentPassword)) {
-			logger.debug("Atualizando senha usuário {}", user);
+			logger.log(FINE, "Atualizando senha usuário {}", user);
 			getRepository().put(user, newPassword);
 			return lock.isValid(user, newPassword);
 		}
@@ -45,7 +46,7 @@ public class ServiceInMemory implements Service {
 	@Override
 	public Boolean create(final String user, final String password) {
 		getRepository().put(user, password);
-		logger.debug("Criado usuário {}", user);
+		logger.log(FINE, "Criado usuário {}", user);
 		return lock.isValid(user, password);
 	}
 

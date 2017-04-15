@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Serviço que verifica se o usuario está autorizado.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  */
 public interface Gate {
 

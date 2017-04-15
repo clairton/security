@@ -3,7 +3,7 @@ package br.eti.clairton.security;
 /**
  * Exceção lançada quando o usuario não tem autorização.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  *
  */
 public class UnauthorizedException extends RuntimeException {

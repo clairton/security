@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Lock for users.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  */
 public interface Lock {
 	/**

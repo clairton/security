@@ -4,7 +4,7 @@ package br.eti.clairton.security;
 /**
  * Exceção para lançar quando tentar acessar um recurso sem estar autenticado.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  *
  */
 public class UnauthenticatedException extends RuntimeException {

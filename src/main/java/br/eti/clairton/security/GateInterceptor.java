@@ -1,24 +1,25 @@
 package br.eti.clairton.security;
 
+import static java.util.logging.Level.FINE;
+import static java.util.logging.Logger.getLogger;
+
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * Interceptor para metodos anotados com {@link Protected}.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  */
 @Interceptor
 @Protected
 public class GateInterceptor {
-	private final Logger logger = LogManager.getLogger(GateInterceptor.class);
+	private final Logger logger = getLogger(GateInterceptor.class.getSimpleName());
 	private final String user;
 	private final String app;
 	private final Gate gate;
@@ -48,7 +49,7 @@ public class GateInterceptor {
 		final Object target = context.getTarget();
 		final String resource = extractor.getResource(target);
 		final String operation = extractor.getOperation(context.getMethod());
-		logger.debug("Interceptando {}#{}", target.getClass().getSimpleName(), operation);
+		logger.log(FINE ,"Interceptando {}#{}", new Object[]{target.getClass().getSimpleName(), operation});
 		if (gate.isOpen(user, app, resource, operation)) {
 			try {
 				return context.proceed();

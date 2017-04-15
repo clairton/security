@@ -12,7 +12,7 @@ import net.vidageek.mirror.list.dsl.Matcher;
 /**
  * Extrai os metadados da classe para validar a permissão.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen clairton.rodrigo@gmail.com
  *
  */
 @ApplicationScoped
