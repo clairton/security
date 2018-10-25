@@ -54,6 +54,20 @@ public class ServiceInMemory implements Service {
 	 * {@inheritDoc}
 	 */
 	@Override
+	public Boolean remove(final String user) {
+		final Boolean result = getRepository().remove(user) != null;
+		if (result) {			
+			logger.log(FINE, "Removido usuário {}", user);
+		} else {			
+			logger.log(FINE, "Usuário {} não encontrado", user);
+		}
+		return result ;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Boolean reset(final String user, final String password) {
 		getRepository().put(user, password);
 		return lock.isValid(user, password);

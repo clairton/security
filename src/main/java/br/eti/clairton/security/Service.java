@@ -45,6 +45,17 @@ public interface Service {
 	Boolean create(@NotNull final String user, final @NotNull String password) throws InvalidUserException;
 
 	/**
+	 * Remove user.
+	 * 
+	 * 
+	 * @param user
+	 *            login to create
+	 *            
+	 * @return true/false
+	 */
+	Boolean remove(@NotNull final String user) throws InvalidUserException;
+
+	/**
 	 * Disable user.
 	 * 
 	 * 
